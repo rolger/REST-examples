@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import vending.domain.Beverage;
 
@@ -47,7 +48,19 @@ public class RestfulBeverageClient {
 	}
 
 	public void update(String machineId, Beverage beverage) {
-		throw new RuntimeException("Not yet implemented");
+		MultivaluedMap<String, String> formParam = new MultivaluedHashMap<String, String>();
+		formParam.add("brand", beverage.getBrand());
+		formParam.add("price", beverage.getPrice().toPlainString());
+		formParam.add("quantity", String.valueOf(beverage.getQuantity()));
+
+		Response response = vendingWebTarget //
+				.path(VENDINGMACHINES + machineId + BEVERAGES + beverage.getId()) //
+				.request() //
+				.put(Entity.form(formParam));
+
+		if (!response.getStatusInfo().equals(Status.OK)) {
+			throw new RuntimeException("Could not put" + response);
+		}
 	}
 
 }

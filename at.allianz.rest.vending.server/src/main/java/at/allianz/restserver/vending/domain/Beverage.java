@@ -2,6 +2,9 @@ package at.allianz.restserver.vending.domain;
 
 import java.math.BigDecimal;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Beverage {
 
 	private String id;
@@ -47,6 +50,10 @@ public class Beverage {
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

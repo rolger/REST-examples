@@ -50,5 +50,5 @@ public class RestfulMachineClient {
 	public void update(VendingMachine machine) {
 		throw new RuntimeException("Not yet implemented");
 	}
-
+	
 }
