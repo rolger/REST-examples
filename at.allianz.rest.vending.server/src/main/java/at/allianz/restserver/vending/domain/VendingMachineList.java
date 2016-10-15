@@ -2,6 +2,9 @@ package at.allianz.restserver.vending.domain;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class VendingMachineList {
 
 	private ArrayList<VendingMachine> machines;

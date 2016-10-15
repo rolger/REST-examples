@@ -51,4 +51,8 @@ public class VendingMachine {
 		return id;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }

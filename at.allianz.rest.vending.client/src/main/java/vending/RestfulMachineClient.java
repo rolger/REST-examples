@@ -2,10 +2,12 @@ package vending;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
@@ -48,7 +50,14 @@ public class RestfulMachineClient {
 	}
 
 	public void update(VendingMachine machine) {
-		throw new RuntimeException("Not yet implemented");
+		Response response = vendingWebTarget //
+				.path(VENDINGMACHINES + machine.getId()) //
+				.request(MediaType.APPLICATION_JSON) //
+				.put(Entity.entity(machine, MediaType.APPLICATION_JSON));
+
+		if (!response.getStatusInfo().equals(Status.OK)) {
+			throw new RuntimeException("Could not post" + response);
+		}
 	}
 
 }

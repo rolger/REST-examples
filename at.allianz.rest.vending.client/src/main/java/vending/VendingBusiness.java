@@ -17,7 +17,7 @@ public class VendingBusiness {
 	}
 
 	public void showAllMachines() {
-		System.out.println(machineClient.readAll(MediaType.APPLICATION_JSON));
+		System.out.println(machineClient.readAll(MediaType.APPLICATION_JSON, false));
 		System.out.println(machineClient.readAll(MediaType.APPLICATION_XML));
 	}
 
