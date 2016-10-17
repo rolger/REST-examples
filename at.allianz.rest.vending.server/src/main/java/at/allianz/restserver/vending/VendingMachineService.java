@@ -69,7 +69,7 @@ public class VendingMachineService {
 	@PUT
 	@Path("/vendingmachines/{machineId}/beverages/{beverageId}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Beverage updateBeveage(@PathParam("machineId") String machineId, @PathParam("beverageId") String beverageId,
+	public Beverage updateBeverage(@PathParam("machineId") String machineId, @PathParam("beverageId") String beverageId,
 			@FormParam("brand") String brand, @FormParam("price") String price,
 			@FormParam("quantity") String quantity) {
 		VendingMachine machine = VendingMachineRepository.getInstance().getById(machineId);
